@@ -3,588 +3,502 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="365 The Value Store - Premium garments and lifestyle essentials in Yercaud. Quality meets affordability.">
-    <title>365 The Value Store | Premium Retail Yercaud</title>
+    <title>365 The Value Store | Premium Yercaud Boutique</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bormioli:wght@700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            dark: '#0B1C14',
-                            forest: '#1B4332',
-                            sage: '#40916C',
-                            gold: '#D4AF37',
-                            accent: '#F5E6BE',
-                            cream: '#FDFCF0',
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['Playfair Display', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                        'float': 'float 3s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
-                    }
-                }
-            }
+    <style type="text/tailwindcss">
+        @theme {
+            --font-display: 'Bormioli', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --color-brand-dark: #022c22;
+            --color-brand-emerald: #064e3b;
+            --color-brand-gold: #d4af37;
+            --color-brand-cream: #fdfcf0;
         }
-    </script>
 
-    <style type="text/css">
-        .glass-morphism {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        @layer base {
+            body { @apply font-sans bg-brand-cream text-zinc-900 antialiased; }
+            h1, h2, h3 { @apply font-display tracking-tight; }
         }
-        .reveal { opacity: 0; transition: all 1s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #1B4332; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
-        .hero-gradient { background: linear-gradient(135deg, rgba(11,28,20,0.9) 0%, rgba(27,67,50,0.6) 100%); }
-        .section-padding { padding: 100px 0; }
-        .product-card:hover .product-overlay { opacity: 1; }
+
+        @layer components {
+            .section-reveal { @apply opacity-0 translate-y-10 transition-all duration-1000 ease-out; }
+            .section-reveal.active { @apply opacity-100 translate-y-0; }
+            .glass { @apply bg-white/80 backdrop-blur-md border border-white/20; }
+            .nav-link { @apply relative text-sm font-semibold uppercase tracking-wider transition-colors hover:text-brand-gold after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-gold after:transition-all hover:after:w-full; }
+        }
     </style>
 </head>
-<body class="bg-brand-cream font-sans text-brand-dark overflow-x-hidden custom-scrollbar">
+<body class="overflow-x-hidden">
 
-    <div id="preloader" class="fixed inset-0 z-[100] bg-brand-dark flex items-center justify-center transition-opacity duration-700">
-        <div class="text-center">
-            <div class="w-16 h-16 border-4 border-brand-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <h2 class="text-brand-gold font-serif text-2xl tracking-widest animate-pulse">365 VALUE</h2>
-        </div>
-    </div>
-
-    <header class="fixed w-full z-50 transition-all duration-500" id="main-nav">
-        <div class="bg-brand-dark text-brand-accent py-2 text-xs font-semibold uppercase tracking-widest text-center">
-            ✨ Visit us at Sunny Brook Estate, Yercaud - Open 365 Days ✨
-        </div>
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="group">
-                <div class="text-3xl font-serif font-bold text-white leading-none">
-                    365<span class="text-brand-gold italic group-hover:pl-2 transition-all">VALUE</span>
-                </div>
-                <div class="text-[10px] text-brand-gold tracking-[0.3em] uppercase opacity-80">The Premium Store</div>
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex flex-col">
+                <span class="text-3xl font-bold text-white leading-none">365<span class="text-brand-gold">VALUE</span></span>
+                <span class="text-[10px] uppercase tracking-[0.4em] text-brand-gold/80 font-bold">The Hillside Boutique</span>
             </a>
             
-            <div class="hidden lg:flex items-center space-x-10">
-                <ul class="flex space-x-8 text-sm font-medium text-white/90 uppercase tracking-tighter">
-                    <li><a href="#hero" class="hover:text-brand-gold transition-colors">Home</a></li>
-                    <li><a href="#collection" class="hover:text-brand-gold transition-colors">Collection</a></li>
-                    <li><a href="#lifestyle" class="hover:text-brand-gold transition-colors">Lifestyle</a></li>
-                    <li><a href="#about" class="hover:text-brand-gold transition-colors">Heritage</a></li>
-                    <li><a href="#reviews" class="hover:text-brand-gold transition-colors">Reviews</a></li>
-                    <li><a href="#contact" class="hover:text-brand-gold transition-colors">Location</a></li>
-                </ul>
-                <div class="flex items-center space-x-5 text-white">
-                    <button class="hover:text-brand-gold transition"><i class="fas fa-search"></i></button>
-                    <button class="relative hover:text-brand-gold transition">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="absolute -top-2 -right-2 bg-brand-gold text-brand-dark text-[10px] font-bold px-1.5 rounded-full" id="cart-count">0</span>
-                    </button>
-                </div>
+            <div class="hidden lg:flex items-center space-x-10 text-white">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#heritage" class="nav-link">Heritage</a>
+                <a href="#collection" class="nav-link">Collection</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+                <a href="#contact" class="nav-link">Find Us</a>
             </div>
 
-            <button class="lg:hidden text-white text-2xl" onclick="toggleMenu()">
-                <i class="fas fa-bars-staggered"></i>
-            </button>
-        </nav>
+            <div class="flex items-center space-x-6">
+                <button class="text-white hover:text-brand-gold transition"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="relative text-white hover:text-brand-gold transition">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-brand-gold text-brand-dark text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
+                </button>
+                <button class="lg:hidden text-white text-2xl"><i class="fa-solid fa-bars-staggered"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover scale-110">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-interior-of-a-fashion-store-4437-large.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-transparent"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl space-y-8">
+                <div class="inline-flex items-center space-x-3 bg-brand-gold/20 border border-brand-gold/30 px-4 py-1.5 rounded-full">
+                    <span class="w-2 h-2 bg-brand-gold rounded-full animate-ping"></span>
+                    <span class="text-brand-gold text-xs font-bold uppercase tracking-widest">Now Open at Sunny Brook Estate</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl text-white leading-[1.1]">Where Quality <br><span class="text-brand-gold italic">Meets Integrity.</span></h1>
+                <p class="text-xl text-zinc-300 font-light max-w-xl">Experience Yercaud's most trusted destination for premium readymade garments, boys' wear, and daily essentials. Curated for the modern lifestyle.</p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#collection" class="bg-brand-gold hover:bg-white text-brand-dark px-10 py-4 rounded-full font-bold transition-all duration-500 transform hover:-translate-y-1">View Collection</a>
+                    <a href="#contact" class="border border-white/30 hover:bg-white/10 backdrop-blur-md text-white px-10 py-4 rounded-full font-bold transition-all">Visit Store</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/40 space-y-2">
+            <span class="text-[10px] uppercase tracking-[0.5em]">Scroll to Discover</span>
+            <div class="w-px h-16 bg-gradient-to-b from-brand-gold to-transparent"></div>
+        </div>
     </header>
 
-    <main>
-        <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
-            <div class="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=100&w=2000" class="w-full h-full object-cover scale-110" alt="Store Background">
-                <div class="absolute inset-0 hero-gradient"></div>
+    <section class="bg-brand-dark py-16 border-y border-brand-gold/10">
+        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+            <div class="text-center group">
+                <div class="text-4xl font-display text-brand-gold mb-2 transition-transform group-hover:scale-110">365</div>
+                <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">Days Service</p>
             </div>
-            
-            <div class="container mx-auto px-6 relative z-10 pt-20">
-                <div class="max-w-4xl text-white animate-fade-in-up">
-                    <span class="inline-block px-4 py-1 bg-brand-gold/20 border border-brand-gold/30 rounded-full text-brand-gold text-sm font-bold tracking-widest uppercase mb-6">Established Landmark</span>
-                    <h1 class="text-6xl md:text-8xl font-serif font-bold mb-6 leading-tight">Define Your <br><span class="text-brand-gold italic">Everyday Style.</span></h1>
-                    <p class="text-xl md:text-2xl font-light text-brand-accent/80 mb-10 max-w-2xl leading-relaxed">
-                        Discover a curated selection of premium readymade garments and daily essentials nestled in the hills of Yercaud. Where luxury meets hill-station comfort.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#collection" class="bg-brand-gold text-brand-dark px-10 py-5 rounded-full font-bold text-lg hover:bg-white transition duration-500 text-center">Shop Collection</a>
-                        <a href="#contact" class="border border-white/30 backdrop-blur-sm px-10 py-5 rounded-full font-bold text-lg hover:bg-white/10 transition duration-500 text-center">Visit Store</a>
-                    </div>
+            <div class="text-center group">
+                <div class="text-4xl font-display text-brand-gold mb-2 transition-transform group-hover:scale-110">10k+</div>
+                <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">Happy Locals</p>
+            </div>
+            <div class="text-center group">
+                <div class="text-4xl font-display text-brand-gold mb-2 transition-transform group-hover:scale-110">500+</div>
+                <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">Product Lines</p>
+            </div>
+            <div class="text-center group">
+                <div class="text-4xl font-display text-brand-gold mb-2 transition-transform group-hover:scale-110">100%</div>
+                <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest">Value Guaranteed</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="heritage" class="py-32 section-reveal">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+            <div class="relative group">
+                <div class="absolute -inset-4 border border-brand-gold/20 rounded-2xl -z-10 transition-all group-hover:inset-0"></div>
+                <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=1200" class="rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000" alt="Boutique Heritage">
+                <div class="absolute bottom-10 -right-10 glass p-8 rounded-2xl shadow-xl hidden md:block animate-bounce-slow">
+                    <span class="text-5xl text-brand-gold font-display">4.5</span>
+                    <div class="text-xs font-bold text-zinc-500 uppercase">Google Rating</div>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <span class="text-brand-gold font-bold text-sm tracking-[0.3em] uppercase">The Landmark of Yercaud</span>
+                <h2 class="text-5xl text-brand-dark leading-tight">Crafting Value into <br>Every Fabric.</h2>
+                <p class="text-lg text-zinc-600 leading-relaxed">Located in the tranquil **Sunny Brook Estate**, near the iconic Kiliyur Falls, 365 The Value Store has redefined local retail. We don't just sell garments; we offer a lifestyle of quality and affordability that remains consistent all 365 days of the year.</p>
+                <ul class="space-y-4 pt-4">
+                    <li class="flex items-center space-x-4 text-zinc-700 font-medium">
+                        <i class="fa-solid fa-circle-check text-brand-gold"></i>
+                        <span>Premium Readymade Boys' Collection</span>
+                    </li>
+                    <li class="flex items-center space-x-4 text-zinc-700 font-medium">
+                        <i class="fa-solid fa-circle-check text-brand-gold"></i>
+                        <span>Wholesale T-Shirt Direct Sourcing</span>
+                    </li>
+                    <li class="flex items-center space-x-4 text-zinc-700 font-medium">
+                        <i class="fa-solid fa-circle-check text-brand-gold"></i>
+                        <span>Curated Lifestyle Daily Essentials</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection" class="py-32 bg-zinc-50 section-reveal">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div class="space-y-4">
+                    <span class="text-brand-gold font-bold text-sm tracking-[0.3em] uppercase">Shop the Look</span>
+                    <h2 class="text-5xl text-brand-dark leading-tight">Curated Selection.</h2>
+                </div>
+                <div class="flex space-x-2 bg-white p-1.5 rounded-full shadow-sm border border-zinc-200" id="filter-group">
+                    <button onclick="filterItems('all')" class="px-8 py-2.5 rounded-full text-xs font-bold uppercase transition-all bg-brand-dark text-white filter-btn" data-type="all">All Items</button>
+                    <button onclick="filterItems('mens')" class="px-8 py-2.5 rounded-full text-xs font-bold uppercase transition-all text-zinc-500 hover:text-brand-dark filter-btn" data-type="mens">Men's</button>
+                    <button onclick="filterItems('kids')" class="px-8 py-2.5 rounded-full text-xs font-bold uppercase transition-all text-zinc-500 hover:text-brand-dark filter-btn" data-type="kids">Kids</button>
                 </div>
             </div>
 
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float text-brand-gold flex flex-col items-center">
-                <span class="text-[10px] uppercase tracking-[0.5em] mb-2 font-bold">Scroll</span>
-                <div class="w-[1px] h-12 bg-brand-gold/50 relative overflow-hidden">
-                    <div class="absolute top-0 w-full h-1/2 bg-brand-gold animate-bounce"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10" id="product-grid">
+                </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-32 bg-brand-dark text-white overflow-hidden">
+        <div class="container mx-auto px-6 relative">
+            <div class="grid lg:grid-cols-3 gap-px bg-white/10 rounded-3xl overflow-hidden border border-white/10">
+                <div class="p-16 space-y-6 hover:bg-white/5 transition-colors group">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold transition-transform group-hover:rotate-12">
+                        <i class="fa-solid fa-truck-fast text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl">Yercaud Delivery</h3>
+                    <p class="text-zinc-400 font-light">Direct delivery to your doorstep within the Yercaud hills region for bulk orders.</p>
+                </div>
+                <div class="p-16 space-y-6 hover:bg-white/5 transition-colors group">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold transition-transform group-hover:rotate-12">
+                        <i class="fa-solid fa-tags text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl">Value Pricing</h3>
+                    <p class="text-zinc-400 font-light">We source directly from manufacturers to ensure you pay the absolute wholesale price.</p>
+                </div>
+                <div class="p-16 space-y-6 hover:bg-white/5 transition-colors group">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold transition-transform group-hover:rotate-12">
+                        <i class="fa-solid fa-rotate text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl">Hassle-free Returns</h3>
+                    <p class="text-zinc-400 font-light">Not satisfied? Our 7-day exchange policy ensures your satisfaction is guaranteed.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="bg-brand-dark py-12 relative overflow-hidden">
-            <div class="container mx-auto px-6 flex flex-wrap justify-between items-center gap-8 relative z-10">
-                <div class="flex items-center space-x-4 group">
-                    <div class="w-14 h-14 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-dark transition-all">
-                        <i class="fas fa-award text-2xl"></i>
-                    </div>
-                    <div>
-                        <div class="text-white font-bold text-xl">Premium Quality</div>
-                        <div class="text-brand-accent/60 text-sm">Handpicked Fabrics</div>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4 group">
-                    <div class="w-14 h-14 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-dark transition-all">
-                        <i class="fas fa-tags text-2xl"></i>
-                    </div>
-                    <div>
-                        <div class="text-white font-bold text-xl">Best Value</div>
-                        <div class="text-brand-accent/60 text-sm">Wholesale Pricing</div>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4 group">
-                    <div class="w-14 h-14 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-dark transition-all">
-                        <i class="fas fa-truck-fast text-2xl"></i>
-                    </div>
-                    <div>
-                        <div class="text-white font-bold text-xl">Local Delivery</div>
-                        <div class="text-brand-accent/60 text-sm">Yercaud & Surrounding</div>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4 group">
-                    <div class="w-14 h-14 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-dark transition-all">
-                        <i class="fas fa-calendar-check text-2xl"></i>
-                    </div>
-                    <div>
-                        <div class="text-white font-bold text-xl">365 Access</div>
-                        <div class="text-brand-accent/60 text-sm">Open All Year Round</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section-padding bg-white overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col lg:flex-row items-center gap-16">
-                    <div class="lg:w-1/2 relative">
-                        <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80&w=1000" alt="Store Heritage" class="hover:scale-105 transition duration-700">
+    <section id="reviews" class="py-32 section-reveal bg-brand-cream">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center space-y-12">
+                <i class="fa-solid fa-quote-left text-7xl text-brand-gold/20"></i>
+                <div id="testimonial-container" class="transition-opacity duration-500">
+                    <p class="text-3xl md:text-4xl font-display text-brand-dark italic leading-relaxed">"Nice shopping experience. Found exactly what I was looking for at a very reasonable price. The staff is quite helpful!"</p>
+                    <div class="mt-10">
+                        <div class="flex justify-center space-x-1 mb-4">
+                            <i class="fa-solid fa-star text-brand-gold text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-gold text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-gold text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-gold text-sm"></i>
+                            <i class="fa-solid fa-star text-brand-gold text-sm"></i>
                         </div>
-                        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-brand-accent rounded-2xl -z-10 border border-brand-gold/20"></div>
-                        <div class="absolute -top-10 -left-10 text-brand-gold opacity-10">
-                            <i class="fas fa-quote-left text-9xl"></i>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2">
-                        <h2 class="text-sm font-bold text-brand-gold tracking-[0.3em] uppercase mb-4">Our Heritage</h2>
-                        <h3 class="text-4xl md:text-5xl font-serif font-bold text-brand-dark mb-8 leading-tight">Yercaud's Trusted <br>Choice Since 365 Days.</h3>
-                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                            Established in the heart of Sunny Brook Estate, **365 The Value Store** was founded with a single vision: to bridge the gap between high-end fashion and affordable pricing for the Yercaud community.
-                        </p>
-                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                            Whether you are a local resident looking for durable boys' wear or a traveler visiting Kiliyur Falls needing quality t-shirts, our curated collection ensures you never have to compromise on style or budget.
-                        </p>
-                        <div class="grid grid-cols-2 gap-8 mb-10">
-                            <div>
-                                <h4 class="text-brand-gold font-bold text-3xl mb-1">1k+</h4>
-                                <p class="text-sm text-gray-500 font-semibold uppercase">Happy Customers</p>
-                            </div>
-                            <div>
-                                <h4 class="text-brand-gold font-bold text-3xl mb-1">500+</h4>
-                                <p class="text-sm text-gray-500 font-semibold uppercase">Product Lines</p>
-                            </div>
-                        </div>
-                        <a href="#contact" class="inline-flex items-center text-brand-dark font-bold border-b-2 border-brand-gold pb-1 hover:text-brand-gold transition">
-                            Learn more about our mission <i class="fas fa-arrow-right ml-3"></i>
-                        </a>
+                        <h4 class="font-bold uppercase tracking-widest text-zinc-500">Verified Local Shopper</h4>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="collection" class="section-padding bg-brand-cream">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
-                    <div>
-                        <h2 class="text-sm font-bold text-brand-gold tracking-[0.3em] uppercase mb-4">The Collection</h2>
-                        <h3 class="text-4xl font-serif font-bold text-brand-dark">Curated Excellence.</h3>
-                    </div>
-                    <div class="mt-8 md:mt-0 flex space-x-4" id="category-filters">
-                        <button class="px-6 py-2 rounded-full border-2 border-brand-gold bg-brand-gold text-brand-dark font-bold text-sm transition" onclick="filterCategory('all')">All</button>
-                        <button class="px-6 py-2 rounded-full border-2 border-brand-gold text-brand-dark font-bold text-sm hover:bg-brand-gold transition" onclick="filterCategory('mens')">Men's</button>
-                        <button class="px-6 py-2 rounded-full border-2 border-brand-gold text-brand-dark font-bold text-sm hover:bg-brand-gold transition" onclick="filterCategory('kids')">Kids</button>
+    <section class="py-32 section-reveal">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-4xl text-center mb-20 text-brand-dark underline decoration-brand-gold underline-offset-8">Common Questions</h2>
+            <div class="space-y-4">
+                <div class="faq-item border-b border-zinc-200">
+                    <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center py-6 text-left group">
+                        <span class="text-lg font-bold text-zinc-700 group-hover:text-brand-gold transition">Where exactly is 365 Value located?</span>
+                        <i class="fa-solid fa-plus text-zinc-400 group-hover:rotate-45 transition-transform"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-500 text-zinc-500 px-2 pb-6">
+                        We are situated in the heart of **Sunny Brook Estate, Falls Road**, Kiliyur, Yercaud. Just minutes away from the waterfall.
                     </div>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="product-grid">
+                <div class="faq-item border-b border-zinc-200">
+                    <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center py-6 text-left group">
+                        <span class="text-lg font-bold text-zinc-700 group-hover:text-brand-gold transition">Is the store open on weekends?</span>
+                        <i class="fa-solid fa-plus text-zinc-400 group-hover:rotate-45 transition-transform"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-500 text-zinc-500 px-2 pb-6">
+                        Yes! As our name implies, we are open **365 days a year**, including all weekends and public holidays from 10:00 AM to 9:00 PM.
                     </div>
-            </div>
-        </section>
-
-        <section id="lifestyle" class="relative py-48 overflow-hidden bg-brand-dark">
-            <div class="absolute inset-0 opacity-40">
-                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover attachment-fixed" alt="Lifestyle">
-            </div>
-            <div class="container mx-auto px-6 relative z-10 text-center text-white">
-                <h2 class="text-5xl md:text-7xl font-serif font-bold mb-8">Elevate Your Lifestyle.</h2>
-                <p class="max-w-2xl mx-auto text-xl text-brand-accent/80 mb-12">
-                    We don't just sell garments; we offer a promise of quality that lasts through every season in the beautiful hills of Tamil Nadu.
-                </p>
-                <div class="flex justify-center space-x-12">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-brand-gold">Eco</div>
-                        <div class="text-xs uppercase tracking-widest text-white/50">Friendly Fabric</div>
-                    </div>
-                    <div class="w-px h-12 bg-white/20"></div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-brand-gold">Pure</div>
-                        <div class="text-xs uppercase tracking-widest text-white/50">Cotton Comfort</div>
-                    </div>
-                    <div class="w-px h-12 bg-white/20"></div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-brand-gold">Pro</div>
-                        <div class="text-xs uppercase tracking-widest text-white/50">Service Team</div>
+                </div>
+                <div class="faq-item border-b border-zinc-200">
+                    <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center py-6 text-left group">
+                        <span class="text-lg font-bold text-zinc-700 group-hover:text-brand-gold transition">Do you sell school uniforms?</span>
+                        <i class="fa-solid fa-plus text-zinc-400 group-hover:rotate-45 transition-transform"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-500 text-zinc-500 px-2 pb-6">
+                        We provide white t-shirts and casual readymade sets that are popular with students, though we specialize in general boutique garments.
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="reviews" class="section-padding bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-brand-gold font-bold tracking-[0.3em] uppercase mb-4">Customer Experience</h2>
-                    <h3 class="text-4xl font-serif font-bold">Trusted by Thousands.</h3>
+    <section id="contact" class="py-32 section-reveal bg-zinc-50">
+        <div class="container mx-auto px-6 grid lg:grid-cols-5 gap-16">
+            <div class="lg:col-span-2 space-y-12">
+                <div class="space-y-4">
+                    <h2 class="text-5xl text-brand-dark">Join Us at the Hills.</h2>
+                    <p class="text-zinc-500">Plan your visit or get in touch for stock availability and wholesale pricing.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="review-container">
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-6">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-gold flex-shrink-0">
+                            <i class="fa-solid fa-location-arrow"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-zinc-800 mb-1 tracking-tight">Visit The Estate</h4>
+                            <p class="text-sm text-zinc-500 leading-relaxed">Sunny Brook Estate, Kiliyur Falls Rd,<br>Yercaud, Tamil Nadu 636602</p>
+                        </div>
                     </div>
+                    <div class="flex items-start space-x-6">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-brand-gold flex-shrink-0">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-zinc-800 mb-1 tracking-tight">Service Hours</h4>
+                            <p class="text-sm text-zinc-500">Monday — Sunday: 10:00 AM - 9:00 PM</p>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="mt-20 glass-morphism bg-brand-dark p-12 rounded-3xl text-center text-white">
-                    <h4 class="text-2xl font-serif mb-6 italic">"Nice shopping experience. Found exactly what I was looking for..."</h4>
-                    <div class="flex justify-center space-x-1 text-brand-gold mb-4">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-brand-accent/60 text-sm uppercase font-bold tracking-widest">Verified Google Reviewer</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center hover:bg-brand-dark hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center hover:bg-brand-dark hover:text-white transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center hover:bg-brand-dark hover:text-white transition-all"><i class="fa-solid fa-map-location-dot"></i></a>
                 </div>
             </div>
-        </section>
 
-        <section class="section-padding bg-brand-cream">
-            <div class="container mx-auto px-6 max-w-4xl">
-                <h3 class="text-3xl font-serif font-bold text-center mb-16">Frequently Asked Questions</h3>
-                <div class="space-y-4">
-                    <div class="faq-item border border-brand-gold/20 rounded-2xl bg-white overflow-hidden transition-all duration-300">
-                        <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none" onclick="toggleFaq(0)">
-                            <span class="font-bold text-brand-dark">What are your store hours in Yercaud?</span>
-                            <i class="fas fa-chevron-down text-brand-gold transition-transform duration-300" id="faq-icon-0"></i>
-                        </button>
-                        <div class="px-6 pb-6 text-gray-600 hidden" id="faq-content-0">
-                            We are open every single day of the year (365 days) from 10:00 AM to 9:00 PM to serve locals and tourists visiting Sunny Brook Estate.
+            <div class="lg:col-span-3 bg-white p-12 rounded-3xl shadow-xl border border-zinc-100">
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-widest text-zinc-400">Full Name</label>
+                            <input type="text" class="w-full bg-zinc-50 px-5 py-4 rounded-xl border-none ring-1 ring-zinc-200 focus:ring-2 focus:ring-brand-gold outline-none transition" placeholder="John Doe">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-widest text-zinc-400">Mobile Number</label>
+                            <input type="tel" class="w-full bg-zinc-50 px-5 py-4 rounded-xl border-none ring-1 ring-zinc-200 focus:ring-2 focus:ring-brand-gold outline-none transition" placeholder="+91 XXXX XXX XXX">
                         </div>
                     </div>
-                    <div class="faq-item border border-brand-gold/20 rounded-2xl bg-white overflow-hidden transition-all duration-300">
-                        <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none" onclick="toggleFaq(1)">
-                            <span class="font-bold text-brand-dark">Do you offer wholesale prices for bulk orders?</span>
-                            <i class="fas fa-chevron-down text-brand-gold transition-transform duration-300" id="faq-icon-1"></i>
-                        </button>
-                        <div class="px-6 pb-6 text-gray-600 hidden" id="faq-content-1">
-                            Yes, we specialize in "Value Pricing." We offer significant discounts for bulk purchases on t-shirts, boys' wear, and undergarments.
-                        </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold uppercase tracking-widest text-zinc-400">Inquiry Type</label>
+                        <select class="w-full bg-zinc-50 px-5 py-4 rounded-xl border-none ring-1 ring-zinc-200 focus:ring-2 focus:ring-brand-gold outline-none transition appearance-none">
+                            <option>Wholesale Order</option>
+                            <option>Check Stock Availability</option>
+                            <option>Visit Directions</option>
+                            <option>Feedback</option>
+                        </select>
                     </div>
-                    <div class="faq-item border border-brand-gold/20 rounded-2xl bg-white overflow-hidden transition-all duration-300">
-                        <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none" onclick="toggleFaq(2)">
-                            <span class="font-bold text-brand-dark">Can I return items if they don't fit?</span>
-                            <i class="fas fa-chevron-down text-brand-gold transition-transform duration-300" id="faq-icon-2"></i>
-                        </button>
-                        <div class="px-6 pb-6 text-gray-600 hidden" id="faq-content-2">
-                            Absolutely. We have a 7-day hassle-free exchange policy for all readymade garments, provided the tags are intact and you have the bill.
-                        </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold uppercase tracking-widest text-zinc-400">Your Message</label>
+                        <textarea rows="4" class="w-full bg-zinc-50 px-5 py-4 rounded-xl border-none ring-1 ring-zinc-200 focus:ring-2 focus:ring-brand-gold outline-none transition" placeholder="How can we help you today?"></textarea>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-20 bg-brand-gold">
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
-                <div class="text-brand-dark">
-                    <h3 class="text-3xl font-serif font-bold mb-2 text-white">Join the Value Club</h3>
-                    <p class="font-medium opacity-80">Get exclusive offers and new arrivals alerts directly.</p>
-                </div>
-                <form class="flex w-full md:w-auto gap-2">
-                    <input type="email" placeholder="Enter your email" class="px-6 py-4 rounded-full border-none focus:ring-2 focus:ring-brand-dark w-full md:w-80">
-                    <button class="bg-brand-dark text-white px-8 py-4 rounded-full font-bold hover:bg-opacity-90 transition">Subscribe</button>
+                    <button class="w-full bg-brand-dark text-white font-bold py-5 rounded-xl hover:bg-brand-gold transition duration-500 shadow-lg hover:shadow-brand-gold/20 transform hover:-translate-y-1">Send Message</button>
                 </form>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact" class="section-padding bg-brand-dark text-white relative">
-            <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 relative z-10">
-                <div>
-                    <h2 class="text-brand-gold font-bold tracking-[0.3em] uppercase mb-4">Contact Us</h2>
-                    <h3 class="text-5xl font-serif font-bold mb-10">Visit our Home.</h3>
-                    
-                    <div class="space-y-10">
-                        <div class="flex items-start space-x-6">
-                            <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold border border-brand-gold/20 flex-shrink-0">
-                                <i class="fas fa-location-dot"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold mb-1">Our Location</h4>
-                                <p class="text-brand-accent/60 leading-relaxed">Sunny Brook Estate, Falls Road,<br>Kiliyur, Yercaud, Tamil Nadu 636602</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-6">
-                            <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold border border-brand-gold/20 flex-shrink-0">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold mb-1">Call for Inquiry</h4>
-                                <p class="text-brand-accent/60">Contact details available via Google Maps</p>
-                                <a href="https://maps.app.goo.gl/eWZVynwij4GWD37w6" class="text-brand-gold text-sm font-bold mt-2 inline-block">GET DIRECTIONS <i class="fas fa-arrow-up-right-from-square ml-1"></i></a>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-6">
-                            <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold border border-brand-gold/20 flex-shrink-0">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold mb-1">Support Email</h4>
-                                <p class="text-brand-accent/60">Contact us through our social handles</p>
-                            </div>
-                        </div>
-                    </div>
+    <section class="h-[500px] w-full bg-zinc-200 relative overflow-hidden">
+        <iframe src="https://maps.app.goo.gl/eWZVynwij4GWD37w6" class="w-full h-full border-none grayscale contrast-125 opacity-80" allowfullscreen="" loading="lazy"></iframe>
+        <div class="absolute bottom-10 left-10 bg-brand-dark text-white p-6 rounded-2xl shadow-2xl max-w-xs">
+            <h4 class="font-bold mb-2">Navigate To Store</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed mb-4">Click below to open Google Maps for 365 The Value Store.</p>
+            <a href="https://maps.app.goo.gl/eWZVynwij4GWD37w6" target="_blank" class="bg-brand-gold text-brand-dark px-4 py-2 rounded-lg text-xs font-extrabold uppercase">Open Map</a>
+        </div>
+    </section>
 
-                    <div class="mt-16 flex space-x-4">
-                        <a href="#" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-all duration-500">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="#" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-all duration-500">
-                            <i class="fab fa-facebook-f text-xl"></i>
-                        </a>
-                        <a href="#" class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-all duration-500">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-3xl p-10 text-brand-dark shadow-2xl">
-                    <h4 class="text-2xl font-serif font-bold mb-6">Send a Message</h4>
-                    <form action="#" class="space-y-5">
-                        <div class="grid grid-cols-2 gap-5">
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Full Name</label>
-                                <input type="text" class="w-full bg-gray-50 border border-gray-100 px-4 py-3 rounded-xl focus:border-brand-gold outline-none transition" required>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Phone</label>
-                                <input type="tel" class="w-full bg-gray-50 border border-gray-100 px-4 py-3 rounded-xl focus:border-brand-gold outline-none transition" required>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Message Topic</label>
-                            <select class="w-full bg-gray-50 border border-gray-100 px-4 py-3 rounded-xl focus:border-brand-gold outline-none transition appearance-none">
-                                <option>Bulk Wholesale Inquiry</option>
-                                <option>Product Availability</option>
-                                <option>Delivery Status</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Message</label>
-                            <textarea rows="4" class="w-full bg-gray-50 border border-gray-100 px-4 py-3 rounded-xl focus:border-brand-gold outline-none transition" placeholder="How can we help you?"></textarea>
-                        </div>
-                        <button class="w-full bg-brand-dark text-white font-bold py-4 rounded-xl hover:bg-brand-gold transition duration-500 transform hover:-translate-y-1">Send Now</button>
-                    </form>
-                </div>
+    <section class="py-20 bg-brand-gold text-brand-dark">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div>
+                <h3 class="text-3xl mb-2">Join the Value Club.</h3>
+                <p class="font-medium opacity-70">Get exclusive notifications on new arrivals and price drops.</p>
             </div>
-        </section>
-    </main>
+            <div class="flex w-full md:w-auto gap-4">
+                <input type="email" placeholder="Your Email" class="bg-white/20 border-none px-6 py-4 rounded-full placeholder:text-brand-dark/50 focus:ring-2 focus:ring-brand-dark outline-none w-full md:w-72">
+                <button class="bg-brand-dark text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition transform">Join</button>
+            </div>
+        </div>
+    </section>
 
-    <footer class="bg-brand-dark border-t border-white/5 pt-20 pb-10">
+    <footer class="bg-brand-dark text-white pt-32 pb-10">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
-                <div class="col-span-2">
-                    <div class="text-3xl font-serif font-bold text-white mb-6">365<span class="text-brand-gold">VALUE</span></div>
-                    <p class="text-brand-accent/40 max-w-sm mb-10">
-                        Providing high-quality readymade apparel and lifestyle essentials to the Yercaud community. Quality that lasts 365 days a year.
+            <div class="grid md:grid-cols-4 gap-20 mb-24">
+                <div class="col-span-2 space-y-8">
+                    <a href="#" class="text-4xl font-bold">365<span class="text-brand-gold">VALUE</span></a>
+                    <p class="text-zinc-500 max-w-md text-lg leading-relaxed font-light">
+                        Redefining the shopping experience in Yercaud. High-quality garments at prices that respect your hard-earned value.
                     </p>
-                    <div class="text-sm font-bold text-brand-gold">Design Credit:</div>
-                    <a href="https://instagram.com/justpriteshrajput" class="text-xl text-white hover:text-brand-gold transition">@justpriteshrajput</a>
+                    <div class="pt-4">
+                        <span class="text-xs font-bold uppercase tracking-[0.4em] text-brand-gold">Crafted with Precision by</span>
+                        <div class="text-3xl mt-2"><a href="https://instagram.com/justpriteshrajput" class="hover:text-brand-gold transition">@justpriteshrajput</a></div>
+                    </div>
                 </div>
                 <div>
-                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Quick Links</h5>
-                    <ul class="space-y-4 text-brand-accent/40">
-                        <li><a href="#about" class="hover:text-brand-gold transition">Our Story</a></li>
-                        <li><a href="#collection" class="hover:text-brand-gold transition">New Arrivals</a></li>
-                        <li><a href="#reviews" class="hover:text-brand-gold transition">Testimonials</a></li>
-                        <li><a href="#contact" class="hover:text-brand-gold transition">Contact Us</a></li>
+                    <h5 class="text-brand-gold font-bold uppercase tracking-widest text-xs mb-8">Navigation</h5>
+                    <ul class="space-y-4 text-zinc-400">
+                        <li><a href="#home" class="hover:text-white transition">Home Gallery</a></li>
+                        <li><a href="#heritage" class="hover:text-white transition">Our Heritage</a></li>
+                        <li><a href="#collection" class="hover:text-white transition">New Arrivals</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Visit Us</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h5 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Categories</h5>
-                    <ul class="space-y-4 text-brand-accent/40">
-                        <li><a href="#" class="hover:text-brand-gold transition">Men's T-Shirts</a></li>
-                        <li><a href="#" class="hover:text-brand-gold transition">Boys Readymade</a></li>
-                        <li><a href="#" class="hover:text-brand-gold transition">Undergarments</a></li>
-                        <li><a href="#" class="hover:text-brand-gold transition">Wholesale Bundles</a></li>
+                    <h5 class="text-brand-gold font-bold uppercase tracking-widest text-xs mb-8">Categories</h5>
+                    <ul class="space-y-4 text-zinc-400">
+                        <li><a href="#" class="hover:text-white transition">Boys' Wear</a></li>
+                        <li><a href="#" class="hover:text-white transition">Mens' T-Shirts</a></li>
+                        <li><a href="#" class="hover:text-white transition">Essentials</a></li>
+                        <li><a href="#" class="hover:text-white transition">Wholesale</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-10">
-                <p class="text-brand-accent/20 text-xs mb-4 md:mb-0">&copy; 2026 365 The Value Store. All Rights Reserved.</p>
-                <div class="flex space-x-6 text-xs font-bold text-brand-accent/20 uppercase tracking-tighter">
-                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+            <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-zinc-600 text-xs tracking-widest uppercase font-bold">© 2026 365 THE VALUE STORE. All Rights Reserved.</p>
+                <div class="flex space-x-8 text-[10px] font-bold uppercase tracking-widest text-zinc-600">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Terms</a>
                     <a href="#" class="hover:text-white transition">Cookies</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-brand-dark flex flex-col items-center justify-center space-y-8 text-3xl font-serif text-white opacity-0 pointer-events-none transition-all duration-500">
-        <button onclick="toggleMenu()" class="absolute top-10 right-10 text-brand-gold text-4xl"><i class="fas fa-times"></i></button>
-        <a href="#hero" onclick="toggleMenu()" class="hover:text-brand-gold">Home</a>
-        <a href="#collection" onclick="toggleMenu()" class="hover:text-brand-gold">Collection</a>
-        <a href="#about" onclick="toggleMenu()" class="hover:text-brand-gold">Heritage</a>
-        <a href="#reviews" onclick="toggleMenu()" class="hover:text-brand-gold">Reviews</a>
-        <a href="#contact" onclick="toggleMenu()" class="hover:text-brand-gold">Contact</a>
-    </div>
-
     <script>
-        // 1. Data Definitions
-        const products = [
-            { id: 1, name: "Premium Cotton T-Shirt", category: "mens", price: "₹299", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=400" },
-            { id: 2, name: "Kids Casual Shorts", category: "kids", price: "₹199", img: "https://images.unsplash.com/photo-1519278470570-c7500beee821?auto=format&fit=crop&q=80&w=400" },
-            { id: 3, name: "Classic Polo Shirt", category: "mens", price: "₹450", img: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&q=80&w=400" },
-            { id: 4, name: "Boys Hooded Sweatshirt", category: "kids", price: "₹599", img: "https://images.unsplash.com/photo-1544126592-807daf21565c?auto=format&fit=crop&q=80&w=400" },
-            { id: 5, name: "Breathable Undergarment Set", category: "mens", price: "₹150", img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&q=80&w=400" },
-            { id: 6, name: "Graphic Print Tee", category: "kids", price: "₹249", img: "https://images.unsplash.com/photo-1503910368127-b4428c775080?auto=format&fit=crop&q=80&w=400" },
-            { id: 7, name: "Formal Fit Trouser", category: "mens", price: "₹899", img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=400" },
-            { id: 8, name: "Soft Cotton Vest", category: "kids", price: "₹120", img: "https://images.unsplash.com/photo-1514090458221-65bb69cf63e6?auto=format&fit=crop&q=80&w=400" }
+        // 1. Data Store
+        const ITEMS = [
+            { id: 1, name: "Premium Cotton Crew", cat: "mens", price: "₹299", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=600" },
+            { id: 2, name: "Kids Cargo Adventure", cat: "kids", price: "₹199", img: "https://images.unsplash.com/photo-1519278470570-c7500beee821?auto=format&fit=crop&q=80&w=600" },
+            { id: 3, name: "Signature Polo Pro", cat: "mens", price: "₹450", img: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&q=80&w=600" },
+            { id: 4, name: "Boys Hooded Fleece", cat: "kids", price: "₹599", img: "https://images.unsplash.com/photo-1544126592-807daf21565c?auto=format&fit=crop&q=80&w=600" },
+            { id: 5, name: "Linen Breeze Trouser", cat: "mens", price: "₹899", img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=600" },
+            { id: 6, name: "Playday Graphic Tee", cat: "kids", price: "₹249", img: "https://images.unsplash.com/photo-1503910368127-b4428c775080?auto=format&fit=crop&q=80&w=600" },
+            { id: 7, name: "Luxury Inner Layer", cat: "mens", price: "₹150", img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&q=80&w=600" },
+            { id: 8, name: "Denim Kids Classic", cat: "kids", price: "₹749", img: "https://images.unsplash.com/photo-1519457431-75514b723b69?auto=format&fit=crop&q=80&w=600" }
         ];
 
-        const reviews = [
-            { name: "Arun Kumar", text: "Best place in Yercaud to buy budget clothes without compromising quality. The owner is very helpful.", stars: 5 },
-            { name: "Priya S.", text: "Found lovely collection for my kids here. The t-shirt material is very soft and durable.", stars: 4 },
-            { name: "Samuel Raj", text: "Prices are unbeatable. Highly recommend for wholesale t-shirt purchases.", stars: 5 }
-        ];
+        let cartCount = 0;
 
-        // 2. DOM Rendering Functions
-        function initStore() {
-            renderProducts('all');
-            renderReviews();
-            setTimeout(() => {
-                document.getElementById('preloader').style.opacity = '0';
-                setTimeout(() => document.getElementById('preloader').remove(), 700);
-            }, 1000);
-        }
+        // 2. Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            renderItems('all');
+            initScrollObserver();
+            initNavbar();
+        });
 
-        function renderProducts(filter) {
+        // 3. Renderer Engine
+        function renderItems(filter) {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
             
-            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            const filtered = filter === 'all' ? ITEMS : ITEMS.filter(i => i.cat === filter);
             
-            filtered.forEach(p => {
+            filtered.forEach(item => {
                 grid.innerHTML += `
-                    <div class="product-card group relative bg-white p-4 rounded-3xl transition duration-500 hover:shadow-2xl reveal active">
-                        <div class="relative h-64 overflow-hidden rounded-2xl mb-6">
-                            <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="${p.name}">
-                            <div class="product-overlay absolute inset-0 bg-brand-dark/40 opacity-0 transition-opacity flex items-center justify-center">
-                                <button onclick="updateCart()" class="bg-brand-gold text-brand-dark p-4 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition duration-500">
-                                    <i class="fas fa-plus"></i> Add to Bag
+                    <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-zinc-100 product-reveal">
+                        <div class="relative h-80 overflow-hidden">
+                            <img src="${item.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="${item.name}">
+                            <div class="absolute inset-0 bg-brand-dark/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button onclick="addToCart()" class="bg-white text-brand-dark px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest shadow-xl transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                                    Quick Add
                                 </button>
                             </div>
                         </div>
-                        <div class="text-xs font-bold text-brand-gold uppercase tracking-widest mb-2">${p.category}</div>
-                        <h4 class="font-bold text-lg mb-2 text-brand-dark">${p.name}</h4>
-                        <div class="text-brand-sage font-bold text-xl">${p.price}</div>
-                    </div>
-                `;
-            });
-        }
-
-        function renderReviews() {
-            const container = document.getElementById('review-container');
-            reviews.forEach(r => {
-                container.innerHTML += `
-                    <div class="bg-brand-cream/50 p-8 rounded-3xl border border-brand-gold/10 hover:border-brand-gold transition duration-500">
-                        <div class="flex text-brand-gold mb-6">
-                            ${Array(r.stars).fill('<i class="fas fa-star text-xs"></i>').join('')}
-                        </div>
-                        <p class="text-gray-600 italic mb-6">"${r.text}"</p>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center font-bold text-brand-dark">
-                                ${r.name.charAt(0)}
-                            </div>
-                            <div class="font-bold text-brand-dark">${r.name}</div>
+                        <div class="p-8 space-y-2">
+                            <span class="text-[10px] font-bold text-brand-gold uppercase tracking-[0.3em]">${item.cat}</span>
+                            <h4 class="text-lg font-bold text-zinc-800">${item.name}</h4>
+                            <div class="text-xl font-display text-brand-emerald">${item.price}</div>
                         </div>
                     </div>
                 `;
             });
         }
 
-        // 3. Functional Components
-        let cartTotal = 0;
-        function updateCart() {
-            cartTotal++;
-            document.getElementById('cart-count').innerText = cartTotal;
-            // Visual feedback
-            const cartIcon = document.querySelector('.fa-shopping-bag');
-            cartIcon.classList.add('animate-bounce');
-            setTimeout(() => cartIcon.classList.remove('animate-bounce'), 1000);
+        // 4. Interaction Controllers
+        function filterItems(type) {
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(btn => {
+                btn.classList.remove('bg-brand-dark', 'text-white');
+                btn.classList.add('text-zinc-500');
+            });
+            event.target.classList.add('bg-brand-dark', 'text-white');
+            renderItems(type);
         }
 
-        function filterCategory(cat) {
-            const buttons = document.querySelectorAll('#category-filters button');
-            buttons.forEach(btn => btn.classList.remove('bg-brand-gold', 'text-brand-dark'));
-            event.target.classList.add('bg-brand-gold', 'text-brand-dark');
-            renderProducts(cat);
+        function addToCart() {
+            cartCount++;
+            const badge = document.getElementById('cart-badge');
+            badge.innerText = cartCount;
+            badge.style.opacity = '1';
+            // Animation
+            badge.classList.add('animate-bounce');
+            setTimeout(() => badge.classList.remove('animate-bounce'), 1000);
         }
 
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('opacity-0');
-            menu.classList.toggle('pointer-events-none');
-        }
-
-        function toggleFaq(index) {
-            const content = document.getElementById(`faq-content-${index}`);
-            const icon = document.getElementById(`faq-icon-${index}`);
-            content.classList.toggle('hidden');
-            icon.classList.toggle('rotate-180');
-        }
-
-        // 4. Scroll Logic
-        window.onscroll = function() {
-            const nav = document.getElementById('main-nav');
-            if (window.pageYOffset > 50) {
-                nav.classList.add('bg-brand-dark/95', 'backdrop-blur-xl', 'py-2');
-                nav.classList.remove('py-4');
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.classList.remove('rotate-45');
             } else {
-                nav.classList.remove('bg-brand-dark/95', 'backdrop-blur-xl', 'py-2');
-                nav.classList.add('py-4');
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.classList.add('rotate-45');
             }
-        };
+        }
 
-        // Run On Start
-        window.onload = initStore;
+        // 5. Scroll & Layout Observer
+        function initScrollObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.section-reveal').forEach(el => observer.observe(el));
+        }
+
+        function initNavbar() {
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    nav.classList.add('glass', 'py-4', 'shadow-xl');
+                    nav.classList.remove('py-6');
+                    nav.querySelectorAll('a, button, span').forEach(el => {
+                        el.classList.add('!text-brand-dark');
+                    });
+                } else {
+                    nav.classList.remove('glass', 'py-4', 'shadow-xl');
+                    nav.classList.add('py-6');
+                    nav.querySelectorAll('a, button, span').forEach(el => {
+                        el.classList.remove('!text-brand-dark');
+                    });
+                }
+            });
+        }
+
+        // 6. Form Handling
+        document.getElementById('contactForm').onsubmit = (e) => {
+            e.preventDefault();
+            alert('Your inquiry for 365 The Value Store has been sent successfully. We will reach out to you shortly!');
+        };
     </script>
 </body>
 </html>
